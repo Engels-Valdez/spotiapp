@@ -1,0 +1,30 @@
+
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-3 mt-5">
+        <label for="termino">Buscar:</label>
+        <input type="text" class="form-control" placeholder="Buscar" [(ngModel)]="termino"  (keyup)="getArtistas()">
+      </div>
+
+      <div class="col-md-9 mt-5" *ngIf="termino">
+        <h4>Buscando: <small>{{termino}}</small> </h4> 
+        <hr class="bg-dark">
+        <div class="row">
+          <div class="col-md-12"> 
+
+            <div class="card-columns">
+              <div class="card" *ngFor="let artista of _spotify.artistas" style="cursor: pointer;" [routerLink]="['/artist', artista.id ]">
+                <img [src]="artista.images[1] | noimagen" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title text-dark">{{artista.name}}</h5>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

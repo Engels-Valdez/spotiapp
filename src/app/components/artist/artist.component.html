@@ -1,0 +1,37 @@
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mt-5">
+          <img [src]="artista.images[1] | noimagen" class="img-fluid img-thumbnail mx-auto d-block">
+        </div>
+        <div class="col-md-8 mt-5">
+          <h1 class="display-4" > {{artista.name}}</h1>
+          <a [routerLink]="['/search']" class="btn btn-outline-danger mt-5 ml-3">Regresar</a>
+          <a [href]="artista.external_urls.spotify" class="btn btn-outline-success mt-5 ml-3" target="blank" >Ver en Spotify</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="mt-5">Top Tracks</h4>
+          <table class="table table-hover table-dark mt-3">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Cancion</th>
+                <th scope="col">Controles</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let track of topTracks; let i = index">
+                <th scope="row">{{i + 1}}</th>
+                <td><img [src]="track.album.images[2] | noimagen" alt=""></td>
+                <td>{{track.name}}</td>
+                <td><audio [src]="track.preview_url" controls class="form-control form-control-sm bg-dark " ></audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
